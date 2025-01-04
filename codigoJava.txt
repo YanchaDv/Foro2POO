@@ -1,0 +1,61 @@
+public class EjecutaJuego {
+    public static void main(String[] args) {
+        //Declarar variables
+        Jugador listadoJuga[] = new Jugador[2];
+        int i;
+        double puntajeMax = 0;
+        String mejorJugador = "";
+        //Declarar, crear e iniciar objeto
+        Juego juego = new Juego ();
+        listadoJuga[0]=new Jugador("Diego",18,200);
+        listadoJuga[1]=new Jugador("Marlon",19,500);
+        //Establecer
+        juego.establecerNombreJuego("UNO");
+        juego.establecerListadoJugadores(listadoJuga);
+        //Imprimir
+        for (i = 0; i <= 1; i++) {
+            System.out.println(juego.obtenerListadoJugadores()[i]+ "Nombre del Juego: " + juego.obtenerNombreJuego());
+            if (juego.obtenerListadoJugadores()[i].puntaje>puntajeMax){
+                 puntajeMax=juego.obtenerListadoJugadores()[i].puntaje;
+                 mejorJugador = juego.obtenerListadoJugadores()[i].nomJugador;
+            }
+        }
+        System.out.println(mejorJugador + " tiene la mejor puntuacion con: " + puntajeMax + " puntos");
+    }
+}
+class Juego{
+    //Declarar datos
+    public Jugador listadoJugadores[];
+    public String nomJuego;
+    //Métodos establecer y obtener
+    public void establecerListadoJugadores(Jugador[] listadoJugadores) {
+        this.listadoJugadores = listadoJugadores;
+    }
+    public void establecerNombreJuego(String nomJuego) {
+        this.nomJuego = nomJuego;
+    }
+    public Jugador[] obtenerListadoJugadores() {
+        return listadoJugadores;
+    }
+    public String obtenerNombreJuego() {
+        return nomJuego;
+    }
+}
+class Jugador{
+    //Declarar datos
+    public String nomJugador;
+    public int edad;
+    public double puntaje;
+    
+    //Constructor
+    public Jugador(String nomJugador, int edad, double puntaje) {
+        this.nomJugador = nomJugador;
+        this.edad = edad;
+        this.puntaje = puntaje;
+    }
+    //toString
+ @Override
+    public String toString() {
+        return "Nombre del Jugador: " + nomJugador + ", Edad: " + edad + ", Puntaje: " + puntaje + ' ';
+    }
+}
